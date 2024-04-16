@@ -8,7 +8,7 @@
 
 const char* ssid = "Not-Connected...";
 const char* password = "ZH9FagdbAdXMNpk3";
-const String path = "/status/status";
+const String path = "/led_name/status";
 
 FirebaseData firebaseData;
 
@@ -41,23 +41,23 @@ void setup() {
   }
 }
 
-void updateLEDs(const String& status) {
-  if (status == "RED") {
+void updateLEDs(const String& led_name) {
+  if (led_name == "RED") {
     digitalWrite(12, LOW);
     digitalWrite(8, HIGH);
     digitalWrite(2, HIGH);
     Serial.println("RED LED ON");
-  } else if (status == "GREEN") {
+  } else if (led_name == "GREEN") {
     digitalWrite(12, HIGH);
     digitalWrite(8, LOW);
     digitalWrite(2, HIGH);
     Serial.println("Green LED on");
-  } else if (status == "BLUE") {
+  } else if (led_name == "BLUE") {
     digitalWrite(12, HIGH);
     digitalWrite(8, HIGH);
     digitalWrite(2, LOW);
     Serial.println("Blue LED on");
-  } else if (status == "OFF") {
+  } else if (led_name == "OFF") {
     digitalWrite(12, HIGH);
     digitalWrite(8, HIGH);
     digitalWrite(2, HIGH);
@@ -69,8 +69,8 @@ void updateLEDs(const String& status) {
 
 void loop() {
   if (Firebase.getString(firebaseData, path)) {
-    String status = firebaseData.stringData();
-    updateLEDs(status);
+    String led_name = firebaseData.stringData();
+    updateLEDs(led_name);
   } else {
     Serial.print("Firebase Error: ");
     Serial.println(firebaseData.errorReason());

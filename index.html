@@ -68,24 +68,24 @@
       firebase.initializeApp(firebaseConfig);
 
       function LED_RED() {
-        firebase.database().ref("status/").set({
+        firebase.database().ref("led_name/").set({
           status: "RED",
         });
       }
 
       function LED_GREEN() {
-        firebase.database().ref("status/").set({
+        firebase.database().ref("led_name/").set({
           status: "GREEN",
         });
       }
 
       function LED_BLUE() {
-        firebase.database().ref("status/").set({
+        firebase.database().ref("led_name/").set({
           status: "BLUE",
         });
       }
       function LED_OFF() {
-        firebase.database().ref("status/").set({
+        firebase.database().ref("led_name/").set({
           status: "OFF",
         });
       }
